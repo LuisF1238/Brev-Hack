@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  brev-dev:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - SECRET_KEY=${SECRET_KEY:-your-secret-key-here}
+    volumes:
+      - .:/app
+      - /app/__pycache__
+    restart: unless-stopped
+    stdin_open: true
+    tty: true 
